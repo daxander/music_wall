@@ -1,0 +1,22 @@
+<h1><%= @song.title %></h1>
+
+<p>
+  Author: <%= @song.author %>
+</p>
+
+
+
+<p> URL: <a href="<%= @song.url %>"><%= @song.url %></a></p>
+
+<h3>Other songs From This Author</h3>
+
+<p><%Song.where(:author => @song.author).where.not(:id => @song.id).all.each do |song| %>
+ <p> <%= song.title %></p>
+ <a href="<%= song.url %>">
+ <p> <%= song.url %></p></a>
+  <% end %>
+  </p>
+
+
+
+<a href="/songs">Back to All songs</a>
